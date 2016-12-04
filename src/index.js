@@ -31,7 +31,7 @@ function getClassesFromArray(targetArray) {
     }
 
     // Array of normal CSS classes or modules.
-    if (parameterType === 'string') {
+    if (Array.isArray(item)) {
       result = result.concat(
         getClassesFromArray(parameter)
       );
@@ -73,7 +73,7 @@ export function mergeClasses(...parameters) {
     }
 
     // Array of normal CSS classes or modules.
-    if (parameterType === 'string') {
+    if (Array.isArray(item)) {
       result = result.concat(
         getClassesFromArray(parameter)
       );
