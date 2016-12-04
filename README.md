@@ -4,11 +4,13 @@ Function aware of CSS modules when merging CSS classes.
 
 ## Installation
 
-    npm install --save merge-classes
+```sh
+npm install --save merge-classes
+```
 
 ## Usage
 
-```Javascript
+```js
 import mergeClasses from 'merge-classes';
 
 let simpleClass = 'simple-1';
@@ -40,7 +42,7 @@ console.log(
   )
 );
 
-// Output (Without line breaks):
+// Output (without line breaks):
 // simple-1
 // src-file-module1.css
 // src-file-module2.css
