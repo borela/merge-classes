@@ -17,23 +17,23 @@ function getClassesFromArray(targetArray) {
     let itemType = typeof item;
 
     // Normal CSS class.
-    if (parameterType === 'string') {
-      result.push(parameter);
-      continue;
-    }
-
-    // Module.
-    if (parameterType === 'object') {
-      result = result.concat(
-        getClassesFromModule(parameter)
-      );
+    if (itemType === 'string') {
+      result.push(item);
       continue;
     }
 
     // Array of normal CSS classes or modules.
     if (Array.isArray(item)) {
       result = result.concat(
-        getClassesFromArray(parameter)
+        getClassesFromArray(item)
+      );
+      continue;
+    }
+
+    // Module.
+    if (itemType === 'object') {
+      result = result.concat(
+        getClassesFromModule(item)
       );
       continue;
     }
@@ -64,18 +64,18 @@ export function mergeClasses(...parameters) {
       continue;
     }
 
-    // Module.
-    if (parameterType === 'object') {
+    // Array of normal CSS classes or modules.
+    if (Array.isArray(parameter)) {
       result = result.concat(
-        getClassesFromModule(parameter)
+        getClassesFromArray(parameter)
       );
       continue;
     }
 
-    // Array of normal CSS classes or modules.
-    if (Array.isArray(item)) {
+    // Module.
+    if (parameterType === 'object') {
       result = result.concat(
-        getClassesFromArray(parameter)
+        getClassesFromModule(parameter)
       );
       continue;
     }
