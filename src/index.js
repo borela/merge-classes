@@ -10,78 +10,43 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-function getClassesFromArray(targetArray) {
-  let result = [];
+function* extractClasses(targetItem) {
+  if (Array.isArray(targetItem)) {
+    yield* extractFromArray(targetItem);
+    return;
+  }
 
+  switch (typeof targetItem) {
+    case 'string':
+      yield targetItem;
+      return;
+    case 'object':
+      yield* extractFromModule(targetItem);
+      return;
+  }
+
+  // Ignore unrecognized types.
+  return;
+}
+
+function* extractFromArray(targetArray) {
   for (let item of targetArray) {
-    let itemType = typeof item;
-
-    // Normal CSS class.
-    if (itemType === 'string') {
-      result.push(item);
-      continue;
-    }
-
-    // Array of normal CSS classes or modules.
-    if (Array.isArray(item)) {
-      result = result.concat(
-        getClassesFromArray(item)
-      );
-      continue;
-    }
-
-    // Module.
-    if (itemType === 'object') {
-      result = result.concat(
-        getClassesFromModule(item)
-      );
-      continue;
-    }
+    yield* extractClasses(item);
   }
-
-  return result;
 }
 
-function getClassesFromModule(module) {
-  let result = [];
-
-  for (let property in module) {
-    result.push(module[property]);
+function* extractFromModule(targetModule) {
+  for (let property in targetModule) {
+    yield* extractClasses(targetModule[property]);
   }
-
-  return result;
 }
 
-export function mergeClasses(...parameters) {
-  let result = [];
-
-  for (let parameter of parameters) {
-    let parameterType = typeof parameter;
-
-    // Normal CSS class.
-    if (parameterType === 'string') {
-      result.push(parameter);
-      continue;
-    }
-
-    // Array of normal CSS classes or modules.
-    if (Array.isArray(parameter)) {
-      result = result.concat(
-        getClassesFromArray(parameter)
-      );
-      continue;
-    }
-
-    // Module.
-    if (parameterType === 'object') {
-      result = result.concat(
-        getClassesFromModule(parameter)
-      );
-      continue;
-    }
-  }
-
-  return result.join(' ');
+export default function mergeClasses(...items) {
+  return items.map(item =>
+      Array.from(
+        extractClasses(item)
+      )
+    )
+    .reduce((a, b) => a.concat(b))
+    .join(' ');
 }
-
-export default mergeClasses;

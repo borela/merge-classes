@@ -1,6 +1,6 @@
 {
   "name": "merge-classes",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Function aware of CSS modules when merging CSS classes.",
   "scripts": {
     "clean": "rimraf ./lib",
