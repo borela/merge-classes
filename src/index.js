@@ -42,11 +42,7 @@ function* extractFromModule(targetModule) {
 }
 
 export default function mergeClasses(...items) {
-  return items.map(item =>
-      Array.from(
-        extractClasses(item)
-      )
-    )
+  return items.map(item => Array.from(extractClasses(item)))
     .reduce((a, b) => a.concat(b))
     .join(' ');
 }
