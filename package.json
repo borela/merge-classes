@@ -1,6 +1,6 @@
 {
   "name": "merge-classes",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Function aware of CSS modules when merging CSS classes.",
   "license": "Apache-2.0",
   "main": "build",
@@ -52,9 +52,7 @@
     "url": "http://www.borela.tech"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.20.0",
     "ctrine-dev-preset": "^1.0.0"
-  },
-  "peerDependencies": {
-    "babel-polyfill": "^6.20.0"
   }
 }
