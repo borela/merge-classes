@@ -29,7 +29,7 @@ let arrayOfSimpleClasses = [
 // In this example, the css module prepends the hash to the class.
 let arrayOfCssModules = [{
   style3: 'hash-style3.css',
-  style4a 'hash-style4.css'
+  style4: 'hash-style4.css'
 },{
   style5: 'hash-style5.css',
   style6: 'hash-style6.css'
