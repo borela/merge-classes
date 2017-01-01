@@ -15,9 +15,10 @@ import mergeClasses from 'merge-classes'
 
 let simpleClass = 'simple-1'
 
+// In this example, the css module prepends the hash to the class.
 let cssModule = {
-  module1: 'src-file-module1.css',
-  module2: 'src-file-module2.css'
+  style1: 'hash-style1',
+  style2: 'hash-style2'
 }
 
 let arrayOfSimpleClasses = [
@@ -25,12 +26,13 @@ let arrayOfSimpleClasses = [
   'simple-3'
 ]
 
+// In this example, the css module prepends the hash to the class.
 let arrayOfCssModules = [{
-  module3: 'src-file-module3.css',
-  module4: 'src-file-module4.css'
+  style3: 'hash-style3.css',
+  style4a 'hash-style4.css'
 },{
-  module5: 'src-file-module5.css',
-  module6: 'src-file-module6.css'
+  style5: 'hash-style5.css',
+  style6: 'hash-style6.css'
 }]
 
 console.log(
@@ -44,12 +46,12 @@ console.log(
 
 // Output (without line breaks):
 // simple-1
-// src-file-module1.css
-// src-file-module2.css
+// hash-style1.css
+// hash-style2.css
 // simple-2
 // simple-3
-// src-file-module3.css
-// src-file-module4.css
-// src-file-module5.css
-// src-file-module6.css
+// hash-style3.css
+// hash-style4.css
+// hash-style5.css
+// hash-style6.css
 ```
