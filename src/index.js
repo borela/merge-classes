@@ -12,37 +12,36 @@
 
 function* extractClasses(targetItem) {
   if (Array.isArray(targetItem)) {
-    yield* extractFromArray(targetItem);
-    return;
+    yield* extractFromArray(targetItem)
+    return
   }
 
   switch (typeof targetItem) {
     case 'string':
-      yield targetItem;
-      return;
+      yield targetItem
+      return
     case 'object':
-      yield* extractFromModule(targetItem);
-      return;
+      yield* extractFromModule(targetItem)
+      return
   }
 
   // Ignore unrecognized types.
-  return;
 }
 
 function* extractFromArray(targetArray) {
   for (let item of targetArray) {
-    yield* extractClasses(item);
+    yield* extractClasses(item)
   }
 }
 
 function* extractFromModule(targetModule) {
   for (let property in targetModule) {
-    yield* extractClasses(targetModule[property]);
+    yield* extractClasses(targetModule[property])
   }
 }
 
 export default function mergeClasses(...items) {
   return items.map(item => Array.from(extractClasses(item)))
     .reduce((a, b) => a.concat(b))
-    .join(' ');
+    .join(' ')
 }
