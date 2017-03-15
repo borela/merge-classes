@@ -50,7 +50,7 @@ function* extractFromObject(targetObject) {
         break
       case 'object':
         // Sub array/object.
-        yield* extractClasses(targetObject[property])
+        yield* extractClasses(VALUE)
     }
   }
 }
