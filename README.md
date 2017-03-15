@@ -13,45 +13,51 @@ npm install --save merge-classes
 ```js
 import mergeClasses from 'merge-classes'
 
-let simpleClass = 'simple-1'
+const SIMPLE_CLASS = 'simple-a'
 
-// In this example, the css module prepends the hash to the class.
-let cssModule = {
-  style1: 'hash-style1',
-  style2: 'hash-style2'
-}
-
-let arrayOfSimpleClasses = [
-  'simple-2',
-  'simple-3'
+const ARRAY_OF_SIMPLE_CLASSES = [
+  'array-simple-1',
+  'array-simple-2'
 ]
 
-// In this example, the css module prepends the hash to the class.
-let arrayOfCssModules = [{
-  style3: 'hash-style3.css',
-  style4: 'hash-style4.css'
+const CSS_MODULE = {
+  style1: 'hash123-style-1',
+  style2: 'hash123-style-2'
+}
+
+const ARRAY_OF_CSS_MODULES = [{
+  style1: 'array-hash123-style-1',
+  style2: 'array-hash123-style-2'
 },{
-  style5: 'hash-style5.css',
-  style6: 'hash-style6.css'
+  style3: 'array-hash123-style-3',
+  style4: 'array-hash123-style-4'
 }]
+
+// Properties with the value “false” will be skipped.
+const CONDITIONAL = {
+  'conditional-1': false,
+  'conditional-2': true
+}
 
 console.log(
   mergeClasses(
-    simpleClass,
-    cssModule,
-    arrayOfSimpleClasses,
-    arrayOfCssModules
+    SIMPLE_CLASS,
+    ARRAY_OF_SIMPLE_CLASSES,
+    CSS_MODULE,
+    ARRAY_OF_CSS_MODULES,
+    CONDITIONAL
   )
 )
 
 // Output (without line breaks):
-// simple-1
-// hash-style1.css
-// hash-style2.css
-// simple-2
-// simple-3
-// hash-style3.css
-// hash-style4.css
-// hash-style5.css
-// hash-style6.css
+// simple-a
+// array-simple-1
+// array-simple-2
+// hash123-style-1
+// hash123-style-2
+// array-hash123-style-1
+// array-hash123-style-2
+// array-hash123-style-3
+// array-hash123-style-4
+// conditional-2
 ```
