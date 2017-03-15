@@ -16,45 +16,183 @@ import assert from 'assert'
 
 import mergeClasses from '../../src'
 
+const SIMPLE_CLASS_A = 'simple-a'
+const SIMPLE_CLASS_B = 'simple-b'
+const SIMPLE_CLASS_C = 'simple-c'
+const SIMPLE_CLASS_D = 'simple-d'
+
+const ARRAY_OF_SIMPLE_CLASSES_A = [
+  'array-simple-1',
+  'array-simple-2'
+]
+
+const ARRAY_OF_SIMPLE_CLASSES_B = [
+  'array-simple-3',
+  'array-simple-4'
+]
+
+const CSS_MODULE_A = {
+  style1: 'hash123-style-1',
+  style2: 'hash123-style-2'
+}
+
+const CSS_MODULE_B = {
+  style3: 'hash123-style-3',
+  style4: 'hash123-style-4'
+}
+
+const ARRAY_OF_CSS_MODULES_A = [{
+  style1: 'array-hash123-style-1',
+  style2: 'array-hash123-style-2'
+},{
+  style3: 'array-hash123-style-3',
+  style4: 'array-hash123-style-4'
+}]
+
+const ARRAY_OF_CSS_MODULES_B = [{
+  style5: 'array-hash123-style-5',
+  style6: 'array-hash123-style-6'
+},{
+  style7: 'array-hash123-style-7',
+  style8: 'array-hash123-style-8'
+}]
+
+const CONDITIONAL_A = {
+  'conditional-1': false,
+  'conditional-2': true
+}
+
+const CONDITIONAL_B = {
+  'conditional-3': false,
+  'conditional-4': true
+}
+
 describe('Merging function', () => {
-  it('lists a directory’s contents', () => {
-    let simpleClass = 'simple-1'
-
-    let cssModule = {
-      style1: 'hash-style1.css',
-      style2: 'hash-style2.css'
-    }
-
-    let arrayOfSimpleClasses = [
-      'simple-2',
-      'simple-3'
-    ]
-
-    let arrayOfCssModules = [{
-      style3: 'hash-style3.css',
-      style4: 'hash-style4.css'
-    },{
-      style5: 'hash-style5.css',
-      style6: 'hash-style6.css'
-    }]
-
+  it('Merges simple CSS', () => {
+    const EXPECTED = [
+      'simple-a',
+      'simple-b',
+      'simple-c',
+      'simple-d',
+    ].join(' ')
     assert.equal(
       mergeClasses(
-        simpleClass,
-        cssModule,
-        arrayOfSimpleClasses,
-        arrayOfCssModules
-      ),[
-        'simple-1',
-        'hash-style1.css',
-        'hash-style2.css',
-        'simple-2',
-        'simple-3',
-        'hash-style3.css',
-        'hash-style4.css',
-        'hash-style5.css',
-        'hash-style6.css'
-      ].join(' ')
+        SIMPLE_CLASS_A,
+        SIMPLE_CLASS_B,
+        SIMPLE_CLASS_C,
+        SIMPLE_CLASS_D
+      ),
+      EXPECTED
+    )
+  })
+
+  it('Merges arrays of simple CSS', () => {
+    const EXPECTED = [
+      'array-simple-1',
+      'array-simple-2',
+      'array-simple-3',
+      'array-simple-4',
+    ].join(' ')
+    assert.equal(
+      mergeClasses(
+        ARRAY_OF_SIMPLE_CLASSES_A,
+        ARRAY_OF_SIMPLE_CLASSES_B
+      ),
+      EXPECTED
+    )
+  })
+
+  it('Merges CSS modules', () => {
+    const EXPECTED = [
+      'hash123-style-1',
+      'hash123-style-2',
+      'hash123-style-3',
+      'hash123-style-4',
+    ].join(' ')
+    assert.equal(
+      mergeClasses(
+        CSS_MODULE_A,
+        CSS_MODULE_B
+      ),
+      EXPECTED
+    )
+  })
+
+  it('Merges arrays of CSS modules', () => {
+    const EXPECTED = [
+      'array-hash123-style-1',
+      'array-hash123-style-2',
+      'array-hash123-style-3',
+      'array-hash123-style-4',
+      'array-hash123-style-5',
+      'array-hash123-style-6',
+      'array-hash123-style-7',
+      'array-hash123-style-8',
+    ].join(' ')
+    assert.equal(
+      mergeClasses(
+        ARRAY_OF_CSS_MODULES_A,
+        ARRAY_OF_CSS_MODULES_B
+      ),
+      EXPECTED
+    )
+  })
+
+  it('Merges conditional styles', () => {
+    const EXPECTED = [
+      'conditional-2',
+      'conditional-4'
+    ].join(' ')
+    assert.equal(
+      mergeClasses(
+        CONDITIONAL_A,
+        CONDITIONAL_B
+      ),
+      EXPECTED
+    )
+  })
+
+  it('Merges mixed content', () => {
+    const EXPECTED = [
+      'simple-a',
+      'simple-b',
+      'simple-c',
+      'simple-d',
+      'array-simple-1',
+      'array-simple-2',
+      'array-simple-3',
+      'array-simple-4',
+      'hash123-style-1',
+      'hash123-style-2',
+      'hash123-style-3',
+      'hash123-style-4',
+      'array-hash123-style-1',
+      'array-hash123-style-2',
+      'array-hash123-style-3',
+      'array-hash123-style-4',
+      'array-hash123-style-5',
+      'array-hash123-style-6',
+      'array-hash123-style-7',
+      'array-hash123-style-8',
+      'conditional-2',
+      'conditional-4'
+    ].join(' ')
+    assert.equal(
+      mergeClasses(
+        SIMPLE_CLASS_A,
+        SIMPLE_CLASS_B,
+        SIMPLE_CLASS_C,
+        SIMPLE_CLASS_D,
+        ARRAY_OF_SIMPLE_CLASSES_A,
+        ARRAY_OF_SIMPLE_CLASSES_B,
+        CSS_MODULE_A,
+        CSS_MODULE_B,
+        ARRAY_OF_CSS_MODULES_A,
+        ARRAY_OF_CSS_MODULES_B,
+        CONDITIONAL_A,
+        CONDITIONAL_B
+      ),
+      EXPECTED
     )
   })
 })
