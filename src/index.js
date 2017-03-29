@@ -17,12 +17,12 @@ function* extractClasses(targetItem) {
   }
 
   switch (typeof targetItem) {
-    case 'string':
-      yield targetItem
-      return
-    case 'object':
-      yield* extractFromObject(targetItem)
-      return
+  case 'string':
+    yield targetItem
+    return
+  case 'object':
+    yield* extractFromObject(targetItem)
+    return
   }
 
   // Ignore unrecognized types.
@@ -38,19 +38,19 @@ function* extractFromObject(targetObject) {
   for (let property in targetObject) {
     const VALUE = targetObject[property]
     switch (typeof property) {
-      case 'string':
-        // CSS module.
-        if (typeof VALUE === 'string') {
-          yield VALUE
-          continue
-        }
-        // Conditional CSS.
-        if (VALUE)
-          yield property
-        break
-      case 'object':
-        // Sub array/object.
-        yield* extractClasses(VALUE)
+    case 'string':
+      // CSS module.
+      if (typeof VALUE === 'string') {
+        yield VALUE
+        continue
+      }
+      // Conditional CSS.
+      if (VALUE)
+        yield property
+      break
+    case 'object':
+      // Sub array/object.
+      yield* extractClasses(VALUE)
     }
   }
 }
