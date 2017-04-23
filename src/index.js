@@ -10,28 +10,9 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-function* extractClasses(targetItem) {
-  if (Array.isArray(targetItem)) {
-    yield* extractFromArray(targetItem)
-    return
-  }
-
-  switch (typeof targetItem) {
-  case 'string':
-    yield targetItem
-    return
-  case 'object':
-    yield* extractFromObject(targetItem)
-    return
-  }
-
-  // Ignore unrecognized types.
-}
-
 function* extractFromArray(targetArray) {
-  for (let item of targetArray) {
+  for (let item of targetArray)
     yield* extractClasses(item)
-  }
 }
 
 function* extractFromObject(targetObject) {
@@ -48,11 +29,25 @@ function* extractFromObject(targetObject) {
       if (VALUE)
         yield property
       break
-    case 'object':
-      // Sub array/object.
-      yield* extractClasses(VALUE)
     }
   }
+}
+
+function* extractClasses(targetItem) {
+  if (Array.isArray(targetItem)) {
+    yield* extractFromArray(targetItem)
+    return
+  }
+
+  switch (typeof targetItem) {
+  case 'string':
+    yield targetItem
+    return
+  case 'object':
+    yield* extractFromObject(targetItem)
+  }
+
+  // Ignore unrecognized types.
 }
 
 export default function mergeClasses(...items) {
