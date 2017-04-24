@@ -44,7 +44,7 @@ const CSS_MODULE_B = {
 const ARRAY_OF_CSS_MODULES_A = [{
   style1: 'array-hash123-style-1',
   style2: 'array-hash123-style-2'
-},{
+}, {
   style3: 'array-hash123-style-3',
   style4: 'array-hash123-style-4'
 }]
@@ -52,7 +52,7 @@ const ARRAY_OF_CSS_MODULES_A = [{
 const ARRAY_OF_CSS_MODULES_B = [{
   style5: 'array-hash123-style-5',
   style6: 'array-hash123-style-6'
-},{
+}, {
   style7: 'array-hash123-style-7',
   style8: 'array-hash123-style-8'
 }]
@@ -73,7 +73,7 @@ describe('Merging function', () => {
       'simple-a',
       'simple-b',
       'simple-c',
-      'simple-d',
+      'simple-d'
     ].join(' ')
     assert.equal(
       mergeClasses(
@@ -91,7 +91,7 @@ describe('Merging function', () => {
       'array-simple-1',
       'array-simple-2',
       'array-simple-3',
-      'array-simple-4',
+      'array-simple-4'
     ].join(' ')
     assert.equal(
       mergeClasses(
@@ -107,7 +107,7 @@ describe('Merging function', () => {
       'hash123-style-1',
       'hash123-style-2',
       'hash123-style-3',
-      'hash123-style-4',
+      'hash123-style-4'
     ].join(' ')
     assert.equal(
       mergeClasses(
@@ -127,7 +127,7 @@ describe('Merging function', () => {
       'array-hash123-style-5',
       'array-hash123-style-6',
       'array-hash123-style-7',
-      'array-hash123-style-8',
+      'array-hash123-style-8'
     ].join(' ')
     assert.equal(
       mergeClasses(
