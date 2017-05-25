@@ -18,18 +18,14 @@ function* extractFromArray(targetArray) {
 function* extractFromObject(targetObject) {
   for (let property in targetObject) {
     const VALUE = targetObject[property]
-    switch (typeof property) {
-    case 'string':
-      // CSS module.
-      if (typeof VALUE === 'string') {
-        yield VALUE
-        continue
-      }
-      // Conditional CSS.
-      if (VALUE)
-        yield property
-      break
+    // CSS module.
+    if (typeof VALUE === 'string') {
+      yield VALUE
+      continue
     }
+    // Conditional CSS.
+    if (VALUE)
+      yield property
   }
 }
 
