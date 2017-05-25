@@ -11,9 +11,6 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-import 'babel-polyfill'
-import assert from 'assert'
-
 import mergeClasses from '../../src'
 
 const SIMPLE_CLASS_A = 'simple-a'
@@ -75,15 +72,14 @@ describe('Merging function', () => {
       'simple-c',
       'simple-d'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         SIMPLE_CLASS_A,
         SIMPLE_CLASS_B,
         SIMPLE_CLASS_C,
         SIMPLE_CLASS_D
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 
   it('Merges arrays of simple CSS', () => {
@@ -93,13 +89,12 @@ describe('Merging function', () => {
       'array-simple-3',
       'array-simple-4'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         ARRAY_OF_SIMPLE_CLASSES_A,
         ARRAY_OF_SIMPLE_CLASSES_B
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 
   it('Merges CSS modules', () => {
@@ -109,13 +104,12 @@ describe('Merging function', () => {
       'hash123-style-3',
       'hash123-style-4'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         CSS_MODULE_A,
         CSS_MODULE_B
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 
   it('Merges arrays of CSS modules', () => {
@@ -129,13 +123,12 @@ describe('Merging function', () => {
       'array-hash123-style-7',
       'array-hash123-style-8'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         ARRAY_OF_CSS_MODULES_A,
         ARRAY_OF_CSS_MODULES_B
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 
   it('Merges conditional styles', () => {
@@ -143,13 +136,12 @@ describe('Merging function', () => {
       'conditional-2',
       'conditional-4'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         CONDITIONAL_A,
         CONDITIONAL_B
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 
   it('Merges mixed content', () => {
@@ -177,7 +169,7 @@ describe('Merging function', () => {
       'conditional-2',
       'conditional-4'
     ].join(' ')
-    assert.equal(
+    expect(
       mergeClasses(
         SIMPLE_CLASS_A,
         SIMPLE_CLASS_B,
@@ -191,8 +183,7 @@ describe('Merging function', () => {
         ARRAY_OF_CSS_MODULES_B,
         CONDITIONAL_A,
         CONDITIONAL_B
-      ),
-      EXPECTED
-    )
+      )
+    ).toBe(EXPECTED)
   })
 })
