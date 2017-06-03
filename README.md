@@ -1,4 +1,4 @@
-# Merge CSS classes.
+# Merge CSS classes
 
 Function aware of CSS modules when merging CSS classes.
 
@@ -28,7 +28,7 @@ const CSS_MODULE = {
 const ARRAY_OF_CSS_MODULES = [{
   style1: 'array-hash123-style-1',
   style2: 'array-hash123-style-2'
-},{
+}, {
   style3: 'array-hash123-style-3',
   style4: 'array-hash123-style-4'
 }]
