@@ -64,7 +64,7 @@ const CONDITIONAL_B = {
   'conditional-4': true
 }
 
-describe('Merging function', () => {
+describe('mergeClasses()', () => {
   it('Merges simple CSS', () => {
     const EXPECTED = [
       'simple-a',
