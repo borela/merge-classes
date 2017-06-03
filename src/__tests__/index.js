@@ -11,7 +11,7 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-import mergeClasses from '../../src'
+import mergeClasses from '..'
 
 const SIMPLE_CLASS_A = 'simple-a'
 const SIMPLE_CLASS_B = 'simple-b'
