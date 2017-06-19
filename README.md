@@ -1,5 +1,3 @@
-# Merge CSS classes
-
 Function aware of CSS modules when merging CSS classes.
 
 ## Installation
