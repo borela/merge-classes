@@ -1,6 +1,6 @@
 {
   "name": "merge-classes",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Function aware of CSS modules when merging CSS classes.",
   "license": "Apache-2.0",
   "main": "build",
