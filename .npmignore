@@ -1,8 +1,0 @@
-*.babelrc
-*.DS_Store
-*.gitattributes
-*.gitignore
-*.idea
-*.log
-*.sublime-project
-*.sublime-workspace
